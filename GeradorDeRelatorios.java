@@ -105,64 +105,64 @@ public class GeradorDeRelatorios {
 		}
 	}
 
-	private void ordena(int ini, int fim){
+	// private void ordena(int ini, int fim){
 
-		if(algoritmo.equals(ALG_INSERTIONSORT)){
+	// 	if(algoritmo.equals(ALG_INSERTIONSORT)){
 
-			for(int i = ini; i <= fim; i++){
+	// 		for(int i = ini; i <= fim; i++){
 
-				Produto x = produtos[i];				
-				int j = (i - 1);
+	// 			Produto x = produtos[i];				
+	// 			int j = (i - 1);
 
-				while(j >= ini){
+	// 			while(j >= ini){
 
-					if(criterio.equals(CRIT_DESC_CRESC)){
+	// 				if(criterio.equals(CRIT_DESC_CRESC)){
 
-						if( x.getDescricao().compareToIgnoreCase(produtos[j].getDescricao()) < 0 ){
+	// 					if( x.getDescricao().compareToIgnoreCase(produtos[j].getDescricao()) < 0 ){
 			
-							produtos[j + 1] = produtos[j];
-							j--;
-						}
-						else break;
-					}
-					else if(criterio.equals(CRIT_PRECO_CRESC)){
+	// 						produtos[j + 1] = produtos[j];
+	// 						j--;
+	// 					}
+	// 					else break;
+	// 				}
+	// 				else if(criterio.equals(CRIT_PRECO_CRESC)){
 
-						if(x.getPreco() < produtos[j].getPreco()){
+	// 					if(x.getPreco() < produtos[j].getPreco()){
 			
-							produtos[j + 1] = produtos[j];
-							j--;
-						}
-						else break;
-					}
-					else if(criterio.equals(CRIT_ESTOQUE_CRESC)){
+	// 						produtos[j + 1] = produtos[j];
+	// 						j--;
+	// 					}
+	// 					else break;
+	// 				}
+	// 				else if(criterio.equals(CRIT_ESTOQUE_CRESC)){
 
-						if(x.getQtdEstoque() < produtos[j].getQtdEstoque()){
+	// 					if(x.getQtdEstoque() < produtos[j].getQtdEstoque()){
 			
-							produtos[j + 1] = produtos[j];
-							j--;
-						}
-						else break;
-					}
-					else throw new RuntimeException("Criterio invalido!");
-				}
+	// 						produtos[j + 1] = produtos[j];
+	// 						j--;
+	// 					}
+	// 					else break;
+	// 				}
+	// 				else throw new RuntimeException("Criterio invalido!");
+	// 			}
 
-				produtos[j + 1] = x;
-			}
-		}
-		else if(algoritmo.equals(ALG_QUICKSORT)){
+	// 			produtos[j + 1] = x;
+	// 		}
+	// 	}
+	// 	else if(algoritmo.equals(ALG_QUICKSORT)){
 
-			if(ini < fim) {
+	// 		if(ini < fim) {
 
-				int q = particiona(ini, fim);
+	// 			int q = particiona(ini, fim);
 				
-				ordena(ini, q);
-				ordena(q + 1, fim);
-			}
-		}
-		else {
-			throw new RuntimeException("Algoritmo invalido!");
-		}
-	}
+	// 			ordena(ini, q);
+	// 			ordena(q + 1, fim);
+	// 		}
+	// 	}
+	// 	else {
+	// 		throw new RuntimeException("Algoritmo invalido!");
+	// 	}
+	// }
 	
 	
 	public void debug(){
@@ -289,19 +289,19 @@ public class GeradorDeRelatorios {
 
 	public static void main(String [] args) {
 
-		if(args.length < 4){
+		// if(args.length < 4){
 
-			System.out.println("Uso:");
-			System.out.println("\tjava " + GeradorDeRelatorios.class.getName() + " <algoritmo> <critério de ordenação> <critério de filtragem> <parâmetro de filtragem> <opções de formatação>");
-			System.out.println("Onde:");
-			System.out.println("\talgoritmo: 'quick' ou 'insertion'");
-			System.out.println("\tcriterio de ordenação: 'preco_c' ou 'descricao_c' ou 'estoque_c'");
-			System.out.println("\tcriterio de filtragem: 'todos' ou 'estoque_menor_igual' ou 'categoria_igual'"); 
-			System.out.println("\tparâmetro de filtragem: argumentos adicionais necessários para a filtragem"); 
-			System.out.println("\topções de formatação: 'negrito' e/ou 'italico'");
-			System.out.println();
-			System.exit(1);
-		}
+		// 	System.out.println("Uso:");
+		// 	System.out.println("\tjava " + GeradorDeRelatorios.class.getName() + " <algoritmo> <critério de ordenação> <critério de filtragem> <parâmetro de filtragem> <opções de formatação>");
+		// 	Sytstem.out.println("Onde:");
+		// 	System.out.println("\talgoritmo: 'quick' ou 'insertion'");
+		// 	System.out.println("\tcriterio de ordenação: 'preco_c' ou 'descricao_c' ou 'estoque_c'");
+		// 	System.out.println("\tcriterio de filtragem: 'todos' ou 'estoque_menor_igual' ou 'categoria_igual'"); 
+		// 	System.out.println("\tparâmetro de filtragem: argumentos adicionais necessários para a filtragem"); 
+		// 	System.out.println("\topções de formatação: 'negrito' e/ou 'italico'");
+		// 	System.out.println();
+		// 	System.exit(1);
+		// }
 
 		String opcao_algoritmo = args[0];
 		String opcao_criterio_ord = args[1];
