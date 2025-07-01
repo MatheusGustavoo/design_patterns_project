@@ -3,6 +3,9 @@ import java.io.IOException;
 
 import java.util.*;
 
+import comparadores.ComparadorDescricao;
+import comparadores.ComparadorEstoque;
+import comparadores.ComparadorPreco;
 import modelo.Produto;
 import modelo.ProdutoPadrao;
 
@@ -81,13 +84,13 @@ public class GeradorDeRelatorios {
 		
 		switch (opcao_criterio_ord) {
 			case "preco_c":
-				gerador.setCriterio_odenacao(new ComparatorPreco());
+				gerador.setCriterio_odenacao(new ComparadorPreco());
 				break;
 			case "descricao_c":
-				gerador.setCriterio_odenacao(new ComparatorDescricao());
+				gerador.setCriterio_odenacao(new ComparadorDescricao());
 				break;
 			case "estoque_c":
-				gerador.setCriterio_odenacao(new ComparatorEstoque());
+				gerador.setCriterio_odenacao(new ComparadorEstoque());
 				break;
 			default:
 				System.out.println("Criterio de ordenação inválido");
@@ -104,6 +107,5 @@ public class GeradorDeRelatorios {
 				System.out.println("Algoritmo de ordenação inválido");
 				System.exit(1);
 		}
-		
 	}
 }
