@@ -2,22 +2,22 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import modelo.Produto;
 
-public class QuickSort implements Ordenador_Interface {
+public class QuickSort implements Algoritmo_Interface {
     Comparator<Produto> tipoComparador;
     ArrayList<Produto> produtos;
 
-    public QuickSort(Comparator<Produto> comparator, ArrayList<Produto> produtos) {
+    public QuickSort(Comparator<Produto> comparator) {
         this.tipoComparador = comparator;
-        this.produtos = produtos;
+        
     }
 
-    public void sort(int ini, int fim) {
+    public void sort(int ini, int fim, ArrayList<Produto> produtos) {
         if (ini < fim) {
 
             int q = particiona(ini, fim);
 
-            this.sort(ini, q);
-            this.sort(q + 1, fim);
+            this.sort(ini, q, produtos);
+            this.sort(q + 1, fim, produtos);
         }
     }
 
