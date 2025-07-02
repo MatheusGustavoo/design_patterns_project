@@ -3,7 +3,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
-
 import modelo.Produto;
 import modelo.ProdutoPadrao;
 
@@ -28,11 +27,11 @@ public class CarregarProdutos {
             while (linha.hasNextLine()) {
                 String dados = linha.nextLine();
                 String[] campos = dados.split(",");
-                int id = Integer.parseInt(campos[0]);
-                String descricao = campos[1];
-                String categoria = campos[3];
-                int qtdEstoque = Integer.parseInt(campos[4]);
-                double preco = Double.parseDouble(campos[5]);
+                int id = Integer.parseInt(campos[0].trim());
+                String descricao = campos[1].trim();
+                String categoria = campos[2].trim();
+                int qtdEstoque = Integer.parseInt(campos[3].trim());
+                double preco = Double.parseDouble(campos[4].trim());
 
                 produtos.add(new ProdutoPadrao(id, descricao, categoria, qtdEstoque, preco)); // Assumindo que você tenha esse construtor
             }

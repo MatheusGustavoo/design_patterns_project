@@ -1,13 +1,12 @@
-import java.io.PrintWriter;
-import java.io.IOException;
-
-import java.util.*;
-
 import comparadores.ComparadorDescricao;
 import comparadores.ComparadorEstoque;
 import comparadores.ComparadorPreco;
+import decoradores.*;
+import filtros.*;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.*;
 import modelo.Produto;
-import modelo.ProdutoPadrao;
 
 public class GeradorDeRelatorios {
 	private ArrayList<Produto> produtos;
@@ -20,10 +19,23 @@ public class GeradorDeRelatorios {
 		this.produtos = new ArrayList<>((produtos));
 	}
 
-	public void gerar() {
-		algoritmo_ordenacao.sort(0, produtos.size() - 1, produtos);
+	 public void gerar(String nomeArquivoSaida) {
+        algoritmo_ordenacao.sort(0, produtos.size() - 1, produtos);
 
-	}
+        try (PrintWriter writer = new PrintWriter(nomeArquivoSaida)) {
+            writer.println("<html><body><ul>");
+
+            for (Produto p : produtos) {
+                if (filtro_produtos.filtrar(p)) {
+                    writer.println("<li>" + p.formataParaImpressao() + "</li>");
+                }
+            }
+
+            writer.println("</ul></body></html>");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 	// public void debug() {
 	// 	System.out.println("Gerando relatório para array contendo " + produtos.length + " produto(s)");
@@ -52,6 +64,12 @@ public class GeradorDeRelatorios {
 
 	public static void main(String[] args) {
 
+		if (args.length < 5) {
+        	System.out.println("Uso:");
+        	System.out.println("java GeradorDeRelatorios <algoritmo> <criterio_ord> <criterio_filtro> <parametro_filtro> <arquivo_csv> [opcoes_formatacao]");
+        return;
+    }
+
 		// if(args.length < 4){
 
 		// System.out.println("Uso:");
@@ -76,11 +94,33 @@ public class GeradorDeRelatorios {
 		String opcao_criterio_filtro = args[2];
 		String opcao_parametro_filtro = args[3];
 		String entrada = args[4];
+		String formatacao = (args.length > 5) ? args[5].toLowerCase() : "";
 		;
 
 		CarregarProdutos carregarProdutos = new CarregarProdutos(entrada);
 		ArrayList<Produto> produtos = carregarProdutos.carregar();
-		GeradorDeRelatorios gerador = new GeradorDeRelatorios(produtos);
+		ArrayList<Produto> produtosFormatados = new ArrayList<>();
+
+		for (Produto p : produtos) {
+            Produto formatado = p;
+
+            if (formatacao.contains("negrito")) {
+                formatado = new ProdutoNegrito(formatado);
+            }
+            if (formatacao.contains("italico")) {
+                formatado = new ProdutoItalico(formatado);
+            }
+            if (formatacao.contains("vermelho")) {
+                formatado = new ProdutoColorido(formatado, "red");
+            }
+            if (formatacao.contains("azul")) {
+                formatado = new ProdutoColorido(formatado, "blue");
+            }
+
+            produtosFormatados.add(formatado);
+        }
+
+		GeradorDeRelatorios gerador = new GeradorDeRelatorios(produtosFormatados);
 		
 		switch (opcao_criterio_ord) {
 			case "preco_c":
@@ -107,5 +147,39 @@ public class GeradorDeRelatorios {
 				System.out.println("Algoritmo de ordenação inválido");
 				System.exit(1);
 		}
+
+		Filtro_interface filtro;
+
+        switch (opcao_criterio_filtro) {
+            case "todos":
+                filtro = new FiltroTodos();
+                break;
+            case "estoque_menor_igual":
+                int limite = Integer.parseInt(opcao_parametro_filtro);
+                filtro = new FiltroPorEstoqueMenorIgual(limite);
+                break;
+            case "categoria_igual":
+                filtro = new FiltroPorCategoria(opcao_parametro_filtro);
+                break;
+            case "preco_intervalo":
+                String[] partes = opcao_parametro_filtro.split("-");
+                if (partes.length != 2) {
+                    System.out.println("Formato do intervalo de preço inválido. Use: min-max (ex: 10.0-30.0)");
+                    return;
+                }
+                double min = Double.parseDouble(partes[0]);
+                double max = Double.parseDouble(partes[1]);
+                filtro = new FiltroPorIntervaloDePreco(min, max);
+                break;
+            case "descricao_contendo":
+                filtro = new FiltroPorDescricaoContendo(opcao_parametro_filtro);
+                break;
+            default:
+                System.out.println("Critério de filtragem inválido");
+                return;
+        }
+
+        gerador.setFiltro_produtos(filtro);
+        gerador.gerar("relatorio.html");
 	}
 }

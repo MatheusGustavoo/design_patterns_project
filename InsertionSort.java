@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Comparator;
-
 import modelo.Produto;
 
 public class InsertionSort implements Algoritmo_Interface {
@@ -9,7 +8,8 @@ public class InsertionSort implements Algoritmo_Interface {
     public InsertionSort(Comparator<Produto> comparator) {
         this.tipoComparador = comparator;
     }
-
+    
+    @Override
     public void sort(int ini, int fim, ArrayList<Produto> produtos) {
         for (int i = ini; i <= fim; i++) {
             Produto x = produtos.get(i);
