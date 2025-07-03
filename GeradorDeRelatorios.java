@@ -9,7 +9,7 @@ import java.util.*;
 import modelo.Produto;
 
 public class GeradorDeRelatorios {
-	private ArrayList<Produto> produtos;
+	private final ArrayList<Produto> produtos;
 	private Algoritmo_Interface algoritmo_ordenacao;
 	private Comparator<Produto> criterio_odenacao;
 	private Filtro_interface filtro_produtos;
@@ -95,7 +95,7 @@ public class GeradorDeRelatorios {
 		String opcao_parametro_filtro = args[3];
 		String entrada = args[4];
 		String formatacao = (args.length > 5) ? args[5].toLowerCase() : "";
-		;
+		
 
 		CarregarProdutos carregarProdutos = new CarregarProdutos(entrada);
 		ArrayList<Produto> produtos = carregarProdutos.carregar();
