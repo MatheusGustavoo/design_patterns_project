@@ -3,6 +3,7 @@ import comparadores.ComparadorEstoque;
 import comparadores.ComparadorPreco;
 import filtros.*;
 import formatador.*;
+import algoritmos.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
