@@ -2,14 +2,14 @@ package filtros;
 import modelo.Produto;
 
 public class FiltroPorDescricaoSubstring implements Filtro_interface {
-    private final String termo;
+    private final String substring;
 
-    public FiltroPorDescricaoSubstring(String termo) {
-        this.termo = termo.toLowerCase();
+    public FiltroPorDescricaoSubstring(String substring) {
+        this.substring = substring.toLowerCase();
     }
 
     @Override
     public boolean filtrar(Produto p) {
-        return p.getDescricao().toLowerCase().contains(termo);
+        return p.getDescricao().toLowerCase().contains(substring);
     }
 }

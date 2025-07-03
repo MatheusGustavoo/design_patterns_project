@@ -1,6 +1,5 @@
 package comparadores;
 import java.util.Comparator;
-
 import modelo.Produto;
 public  class ComparadorEstoque implements Comparator<Produto> {
     public int compare(Produto p1, Produto p2) {
