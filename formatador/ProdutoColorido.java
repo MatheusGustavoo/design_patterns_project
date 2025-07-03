@@ -3,7 +3,7 @@ package formatador;
 import modelo.Produto;
 
 public class ProdutoColorido extends FormataProduto {
-    private String cor;
+    private final String cor;
 
     public ProdutoColorido(Produto produto, String cor) {
         super(produto);

@@ -2,7 +2,7 @@ package filtros;
 import modelo.Produto;
 
 public class FiltroPorDescricaoSubstring implements Filtro_interface {
-    private String termo;
+    private final String termo;
 
     public FiltroPorDescricaoSubstring(String termo) {
         this.termo = termo.toLowerCase();

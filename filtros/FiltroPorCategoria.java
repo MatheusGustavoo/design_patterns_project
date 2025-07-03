@@ -2,7 +2,7 @@ package filtros;
 import modelo.Produto;
 
 public class FiltroPorCategoria implements Filtro_interface {
-    private String categoria;
+    private final String categoria;
 
     public FiltroPorCategoria(String categoria) {
         this.categoria = categoria.toLowerCase();
