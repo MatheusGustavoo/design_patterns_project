@@ -1,10 +1,10 @@
 package filtros;
 import modelo.Produto;
 
-public class FiltroPorDescricaoContendo implements Filtro_interface {
+public class FiltroPorDescricaoSubstring implements Filtro_interface {
     private String termo;
 
-    public FiltroPorDescricaoContendo(String termo) {
+    public FiltroPorDescricaoSubstring(String termo) {
         this.termo = termo.toLowerCase();
     }
 

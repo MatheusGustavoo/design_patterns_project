@@ -172,7 +172,7 @@ public class GeradorDeRelatorios {
                 filtro = new FiltroPorIntervaloDePreco(min, max);
                 break;
             case "descricao_contendo":
-                filtro = new FiltroPorDescricaoContendo(opcao_parametro_filtro);
+                filtro = new FiltroPorDescricaoSubstring(opcao_parametro_filtro);
                 break;
             default:
                 System.out.println("Critério de filtragem inválido");
