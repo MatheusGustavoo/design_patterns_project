@@ -1,4 +1,4 @@
-package decoradores;
+package formatador;
 
 import modelo.Produto;
 
