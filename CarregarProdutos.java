@@ -33,7 +33,7 @@ public class CarregarProdutos {
                 int qtdEstoque = Integer.parseInt(campos[3].trim());
                 double preco = Double.parseDouble(campos[4].trim());
 
-                produtos.add(new ProdutoPadrao(id, descricao, categoria, qtdEstoque, preco)); // Assumindo que você tenha esse construtor
+                produtos.add(new ProdutoPadrao(id, descricao, categoria, qtdEstoque, preco));
             }
 
         } catch (FileNotFoundException e) {

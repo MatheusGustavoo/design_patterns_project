@@ -97,9 +97,9 @@ public class GeradorDeRelatorios {
 			System.out.println("\t<parametro_filtragem>: parâmetro utilizado pela filtragem escolhida.");
 			System.out.println("\t\tExemplos:");
 			System.out.println("\t\t\t20             -> para 'estoque_menor_igual'");
-			System.out.println("\t\t\tAlimentos      -> para 'categoria_igual'");
+			System.out.println("\t\t\tLivros      -> para 'categoria_igual'");
 			System.out.println("\t\t\t10.0-30.0      -> para 'preco_intervalo'");
-			System.out.println("\t\t\t\"arroz\"        -> para 'descricao_contendo'");
+			System.out.println("\t\t\t\"Neuromancer\"        -> para 'descricao_contendo'");
 			System.out.println();
 			System.out.println("\t<arquivo_csv>: caminho para o arquivo CSV contendo os produtos.");
 			System.out.println();
