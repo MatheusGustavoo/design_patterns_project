@@ -16,8 +16,8 @@ public class CarregarProdutos {
     public ArrayList<Produto> carregar() {
         ArrayList<Produto> produtos = new ArrayList<>();
 
-        try {
-            Scanner linha = new Scanner(new File(caminho));
+        try (Scanner linha = new Scanner(new File(caminho));){
+            
 
             // Ignorando a primeira linha
             if (linha.hasNextLine()) {
