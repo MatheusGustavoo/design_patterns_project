@@ -1,87 +1,66 @@
 package modelo;
+
 import java.text.NumberFormat;
 
 public class ProdutoPadrao implements Produto {
 
-	private static final String SEPARADOR = ", ";
+    private static final String SEPARADOR = ", ";
 
-	private int id;
-	private String descricao;
-	private String categoria;
-	private int qtdEstoque;
-	private double preco;
+    private final int id;
+    private final String descricao;
+    private final String categoria;
+    private int qtdEstoque;
+    private double preco;
 
-	public ProdutoPadrao(int id, String descricao, String categoria, int qtdEstoque, double preco){
+    public ProdutoPadrao(int id, String descricao, String categoria, int qtdEstoque, double preco) {
+        this.id = id;
+        this.descricao = descricao;
+        this.categoria = categoria;
+        this.qtdEstoque = qtdEstoque;
+        this.preco = preco;
+    }
 
-		setId(id);
-		setDescricao(descricao);
-		setCategoria(categoria);
-		setQtdEstoque(qtdEstoque);
-		setPreco(preco);
-	}
+    @Override
+    public int getId() {
+        return id;
+    }
 
-	// setters	
+    @Override
+    public String getDescricao() {
+        return descricao;
+    }
 
-	private void setId(int id){
+    @Override
+    public String getCategoria() {
+        return categoria;
+    }
 
-		this.id = id;
-	}
+    @Override
+    public int getQtdEstoque() {
+        return qtdEstoque;
+    }
 
-	private void setDescricao(String descricao){
+    @Override
+    public void setQtdEstoque(int qtdEstoque) {
+        this.qtdEstoque = qtdEstoque;
+    }
 
-		this.descricao = descricao;
-	}
+    @Override
+    public double getPreco() {
+        return preco;
+    }
 
-	private void setCategoria(String categoria){
+    @Override
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
 
-		this.categoria = categoria;
-	}
-
-	public void setQtdEstoque(int qtdEstoque){
-
-		this.qtdEstoque = qtdEstoque;
-	}
-	
-	public void setPreco(double preco){
-	
-		this.preco = preco;
-	}
-
-	// getters
-
-	public int getId(){
-
-		return this.id;
-	}
-
-	public String getDescricao(){
-
-		return this.descricao;
-	}
-
-	public String getCategoria(){
-
-		return this.categoria;
-	}
-
-	public int getQtdEstoque(){
-
-		return this.qtdEstoque;
-	}
-	
-	public double getPreco(){
-	
-		return this.preco;
-	}
-
-
-	// metodo que devolve uma String que representa o produto, a ser usada na geração dos relatorios.
-
-	public String formataParaImpressao(){
-
-		NumberFormat fmt = NumberFormat.getCurrencyInstance();
-
-		return getDescricao() + SEPARADOR + getCategoria() + SEPARADOR + fmt.format(getPreco()) + SEPARADOR + getQtdEstoque() + " unidade(s) em estoque";
-	}
-
+    @Override
+    public String formataParaImpressao() {
+        NumberFormat fmt = NumberFormat.getCurrencyInstance();
+        return getDescricao() + SEPARADOR
+                + getCategoria() + SEPARADOR
+                + fmt.format(getPreco()) + SEPARADOR
+                + getQtdEstoque() + " unidade(s) em estoque";
+    }
 }

@@ -1,14 +1,15 @@
 package modelo;
+
 public interface Produto {
 
-	public void setQtdEstoque(int qtdEstoque);
-	public void setPreco(double preco);
-	
-	public int getId();
-	public String getDescricao();
-	public String getCategoria();
-	public int getQtdEstoque();	
-	public double getPreco();
+    void setQtdEstoque(int qtdEstoque);
+    void setPreco(double preco);
 
-	public String formataParaImpressao();
+    int getId();
+    String getDescricao();
+    String getCategoria();
+    int getQtdEstoque();
+    double getPreco();
+
+    String formataParaImpressao();
 }

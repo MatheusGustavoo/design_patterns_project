@@ -2,10 +2,16 @@ package formatador;
 
 import modelo.Produto;
 
+/**
+ * Decorator base para formatação de produtos.
+ * Delega todos os métodos ao produto envolvido,
+ * cabendo às subclasses sobrescrever apenas formataParaImpressao().
+ */
 public abstract class FormataProduto implements Produto {
-    protected Produto produto;
 
-    public FormataProduto(Produto produto) {
+    protected final Produto produto;
+
+    protected FormataProduto(Produto produto) {
         this.produto = produto;
     }
 

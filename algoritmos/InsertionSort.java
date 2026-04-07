@@ -1,30 +1,28 @@
 package algoritmos;
-import java.util.ArrayList;
+
 import java.util.Comparator;
+import java.util.List;
 import modelo.Produto;
 
-public class InsertionSort implements Algoritmo_Interface {
-    private Comparator<Produto> tipoComparador;
+public class InsertionSort implements AlgoritmoOrdenacao {
 
-    public InsertionSort(Comparator<Produto> comparator) {
-        this.tipoComparador = comparator;
+    private final Comparator<Produto> comparador;
+
+    public InsertionSort(Comparator<Produto> comparador) {
+        this.comparador = comparador;
     }
-    
+
     @Override
-    public void sort(int ini, int fim, ArrayList<Produto> produtos) {
-        for (int i = ini; i <= fim; i++) {
-            Produto x = produtos.get(i);
-            int j = (i - 1);
+    public void ordenar(List<Produto> produtos) {
+        for (int i = 1; i < produtos.size(); i++) {
+            Produto chave = produtos.get(i);
+            int j = i - 1;
 
-            while (j >= ini) {
-                if (tipoComparador.compare(x, produtos.get(j)) < 0) {
-
-                    produtos.set(j + 1, produtos.get(j));
-                    j--;
-                } else
-                    break;
+            while (j >= 0 && comparador.compare(chave, produtos.get(j)) < 0) {
+                produtos.set(j + 1, produtos.get(j));
+                j--;
             }
-            produtos.set(j + 1, x);
+            produtos.set(j + 1, chave);
         }
     }
 }
