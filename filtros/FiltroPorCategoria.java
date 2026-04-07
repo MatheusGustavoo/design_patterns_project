@@ -1,7 +1,7 @@
 package filtros;
 import modelo.Produto;
 
-public class FiltroPorCategoria implements Filtro_interface {
+public class FiltroPorCategoria implements FiltroProduto {
     private final String categoria;
 
     public FiltroPorCategoria(String categoria) {

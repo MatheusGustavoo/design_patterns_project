@@ -13,7 +13,7 @@ public class GeradorDeRelatorios {
 	private final ArrayList<Produto> produtos;
 	private AlgoritmoOrdenacao algoritmo_ordenacao;
 	private Comparator<Produto> criterio_odenacao;
-	private Filtro_interface filtro_produtos;
+	private FiltroProduto filtro_produtos;
 
 	public GeradorDeRelatorios(ArrayList<Produto> produtos) {
 
@@ -49,7 +49,7 @@ public class GeradorDeRelatorios {
 	public void setCriterio_odenacao(Comparator<Produto> criterio_odenacao) {
 		this.criterio_odenacao = criterio_odenacao;
 	}
-	public void setFiltro_produtos(Filtro_interface filtro_produtos) {
+	public void setFiltro_produtos(FiltroProduto filtro_produtos) {
 		this.filtro_produtos = filtro_produtos;
 	}
 
@@ -59,7 +59,7 @@ public class GeradorDeRelatorios {
 	public Comparator<Produto> getCriterio_odenacao() {
 		return criterio_odenacao;
 	}
-	public Filtro_interface getFiltro_produtos() {
+	public FiltroProduto getFiltro_produtos() {
 		return filtro_produtos;
 	}	
 
@@ -149,7 +149,7 @@ public class GeradorDeRelatorios {
 				System.exit(1);
 		}
 
-		Filtro_interface filtro;
+		FiltroProduto filtro;
 
         switch (opcao_criterio_filtro) {
             case "todos":

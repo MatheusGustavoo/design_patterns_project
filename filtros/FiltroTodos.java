@@ -1,9 +1,11 @@
 package filtros;
+
 import modelo.Produto;
 
-public class FiltroTodos implements Filtro_interface {
+public class FiltroTodos implements FiltroProduto {
+
     @Override
-    public boolean filtrar(Produto p) {
+    public boolean filtrar(Produto produto) {
         return true;
     }
 }

@@ -1,15 +1,17 @@
 package filtros;
+
 import modelo.Produto;
 
-public class FiltroPorEstoqueMenorIgual implements Filtro_interface {
-    private int limite;
+public class FiltroPorEstoqueMenorIgual implements FiltroProduto {
+
+    private final int limite;
 
     public FiltroPorEstoqueMenorIgual(int limite) {
         this.limite = limite;
     }
 
     @Override
-    public boolean filtrar(Produto p) {
-        return p.getQtdEstoque() <= limite;
+    public boolean filtrar(Produto produto) {
+        return produto.getQtdEstoque() <= limite;
     }
 }

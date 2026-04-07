@@ -1,7 +1,9 @@
 package filtros;
+
 import modelo.Produto;
 
-public class FiltroPorDescricaoSubstring implements Filtro_interface {
+public class FiltroPorDescricaoSubstring implements FiltroProduto {
+
     private final String substring;
 
     public FiltroPorDescricaoSubstring(String substring) {
@@ -9,7 +11,7 @@ public class FiltroPorDescricaoSubstring implements Filtro_interface {
     }
 
     @Override
-    public boolean filtrar(Produto p) {
-        return p.getDescricao().toLowerCase().contains(substring);
+    public boolean filtrar(Produto produto) {
+        return produto.getDescricao().toLowerCase().contains(substring);
     }
 }
