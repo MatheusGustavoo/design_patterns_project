@@ -11,7 +11,7 @@ import modelo.Produto;
 
 public class GeradorDeRelatorios {
 	private final ArrayList<Produto> produtos;
-	private Algoritmo_Interface algoritmo_ordenacao;
+	private AlgoritmoOrdenacao algoritmo_ordenacao;
 	private Comparator<Produto> criterio_odenacao;
 	private Filtro_interface filtro_produtos;
 
@@ -43,7 +43,7 @@ public class GeradorDeRelatorios {
 	// 	System.out.println("parametro filtro = '" + argFiltro + "'");
 	// }
 
-	public void setAlgoritmo_ordenacao(Algoritmo_Interface algoritmo_ordenacao) {
+	public void setAlgoritmo_ordenacao(AlgoritmoOrdenacao algoritmo_ordenacao) {
 		this.algoritmo_ordenacao = algoritmo_ordenacao;
 	}
 	public void setCriterio_odenacao(Comparator<Produto> criterio_odenacao) {
@@ -53,7 +53,7 @@ public class GeradorDeRelatorios {
 		this.filtro_produtos = filtro_produtos;
 	}
 
-	public Algoritmo_Interface getAlgoritmo_ordenacao() {
+	public AlgoritmoOrdenacao getAlgoritmo_ordenacao() {
 		return algoritmo_ordenacao;
 	}
 	public Comparator<Produto> getCriterio_odenacao() {
